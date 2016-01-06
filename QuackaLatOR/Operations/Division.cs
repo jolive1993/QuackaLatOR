@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Operations
 {
-    public class Addition : ICalculate
+    public class Division : ICalculate
     {
         public int Priority { get; set; }
         public string Text { get; set; }
@@ -14,14 +14,14 @@ namespace Operations
         public int Num2 { get; set; }
         public int Result { get; set; }
 
-        public Addition()
+        public Division()
         {
-            Priority = 2;
-            Text = "+";
+            Priority = 1;
+            Text = "/";
         }
         public void calculate()
         {
-            Result = Num1 + Num2;
+            Result = Num1 / Num2;
         }
     }
 

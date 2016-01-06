@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Operations;
 
 namespace Calculator
 {
@@ -14,7 +15,6 @@ namespace Calculator
         public Stack<string> operatorStack;
         public Stack<string> numberStack;
         public List<string> result;
-        private char[] acceptedoperators = { '*', '/', '+', '-' };
         public InputHandler()
         {
             numberStack = new Stack<string>();
@@ -28,11 +28,11 @@ namespace Calculator
         }
         public void splitInput()
         {
-            numbers = input.Split(acceptedoperators, StringSplitOptions.RemoveEmptyEntries);
+            numbers = input.Split(Constants.acceptedoperators, StringSplitOptions.RemoveEmptyEntries);
             operators = input.ToArray();
             foreach (char c in operators)
             {
-                if (c == acceptedoperators[0] | c == acceptedoperators[1] | c == acceptedoperators[2] | c == acceptedoperators[3])
+                if (Constants.acceptedoperators.Contains(c))
                 {
                     operatorStack.Push(c.ToString());
                 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Calculator;
+using Operations;
 
 namespace QuackaLatOR
 {
@@ -11,15 +12,22 @@ namespace QuackaLatOR
     {
         static void Main(string[] args)
         {
+            int result;
             InputHandler inputHandler = new InputHandler();
-            inputHandler.getInput();
-            inputHandler.splitInput();
-            inputHandler.concateResult();
-            foreach(string s in inputHandler.result)
+            OperationFactory operationFactory = new OperationFactory();
+            List<ICalculate> operaters;
+            while (true)
             {
-                Console.WriteLine(s);
+                inputHandler.getInput();
+                inputHandler.splitInput();
+                inputHandler.concateResult();
+                operaters = operationFactory.createOperations(inputHandler.result);
+                Calculator.Calculator calculator = new Calculator.Calculator(inputHandler.result, operaters);
+                result = calculator.execute();
+                Console.WriteLine(result);
+                inputHandler.result.Clear();
+                Console.ReadLine();
             }
-            Console.ReadLine();
         }
     }
 }

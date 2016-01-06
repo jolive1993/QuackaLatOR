@@ -54,6 +54,10 @@
       <Project>{d8dc3eb7-3fad-42af-a1ad-d5f7d5d95490}</Project>
       <Name>Calculator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Operations\Operations.csproj">
+      <Project>{a169cb7d-2a9a-4aab-b683-269597b557a0}</Project>
+      <Name>Operations</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
