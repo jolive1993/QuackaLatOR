@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Operations;
+using DependencyInjection;
 
-namespace Operations
+namespace Factories
 {
     public class OperationFactory
     {
@@ -32,26 +34,14 @@ namespace Operations
             operators = equation.FindAll(Constants.findOperators);
             foreach (string s in operators)
             {
-                if (s[0] == acceptedOperators[0])
+                foreach (Type t in Reflection.filteredTypes)
                 {
-                    var o = new Multiplication();
-                    operations.Add(o);
-                }
-                else if (s[0] == acceptedOperators[1])
-                {
-                    var o = new Division();
-                    operations.Add(o);
-                }
-                else if (s[0] == acceptedOperators[2])
-                {
-                    var o = new Addition();
-                    operations.Add(o);
-                }
-                else if (s[0] == acceptedOperators[3])
-                {
-                    var o = new Subtraction();
-                    operations.Add(o);
-
+                    if (s == t.GetField("text").GetValue(null).ToString())
+                    {
+                        var o = Activator.CreateInstance(t);
+                        ICalculate i = (ICalculate)o;
+                        operations.Add(i);
+                    }
                 }
             }
             operations.Sort(orderOfOperations);
@@ -59,4 +49,3 @@ namespace Operations
         }
     }
 }
-

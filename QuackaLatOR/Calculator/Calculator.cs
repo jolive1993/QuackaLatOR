@@ -10,8 +10,8 @@ namespace Calculator
     public class Calculator
     {
         private List<string> equation;
-        private List<ICalculate> operators;
-        public Calculator(List<string> equation, List<ICalculate> operators)
+        private List<Operations.ICalculate> operators;
+        public Calculator(List<string> equation, List<Operations.ICalculate> operators)
         {
             this.equation = equation;
             this.operators = operators;
@@ -25,13 +25,27 @@ namespace Calculator
                 for (int i = 0; i < operators.Count; i++)
                 {
                     index = equation.IndexOf(operators[i].Text);
-                    operators[i].Num1 = Int32.Parse(equation[index - 1]);
+                    try
+                    {
+                        operators[i].Num1 = Int32.Parse(equation[index - 1]);
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        operators[i].Num1 = 0;
+                    }
                     operators[i].Num2 = Int32.Parse(equation[index + 1]);
                     operators[i].calculate();
                     equation.RemoveAt(index + 1);
                     equation.RemoveAt(index);
-                    equation.RemoveAt(index - 1);
-                    equation.Insert(index - 1, operators[i].Result.ToString());
+                    try
+                    {
+                        equation.RemoveAt(index - 1);
+                        equation.Insert(index - 1, operators[i].Result.ToString());
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        equation.Insert(index, operators[i].Result.ToString());
+                    }
                 }
             }
             result = Int32.Parse(equation[0]);

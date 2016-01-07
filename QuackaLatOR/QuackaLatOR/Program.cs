@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Calculator;
 using Operations;
+using DependencyInjection;
+using Factories;
 
 namespace QuackaLatOR
 {

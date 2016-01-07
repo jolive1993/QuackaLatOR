@@ -54,6 +54,14 @@
       <Project>{d8dc3eb7-3fad-42af-a1ad-d5f7d5d95490}</Project>
       <Name>Calculator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DependencyInjection\DependencyInjection.csproj">
+      <Project>{c13ea264-b276-4881-92b1-a67331112e79}</Project>
+      <Name>DependencyInjection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Factories\Factories.csproj">
+      <Project>{7cbeaefe-fe19-46a8-812e-d96860176e76}</Project>
+      <Name>Factories</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Operations\Operations.csproj">
       <Project>{a169cb7d-2a9a-4aab-b683-269597b557a0}</Project>
       <Name>Operations</Name>
