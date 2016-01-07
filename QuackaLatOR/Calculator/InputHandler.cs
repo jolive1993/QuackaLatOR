@@ -16,7 +16,6 @@ namespace Calculator
         public Stack<string> operatorStack;
         public Stack<string> numberStack;
         public List<string> result;
-        private char[] numberChars = new char[] { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
         public InputHandler()
         {
             numberStack = new Stack<string>();
@@ -27,18 +26,6 @@ namespace Calculator
         {
             Console.WriteLine("Enter a calculation");
             input = Console.ReadLine();
-            foreach (char c in input)
-            {
-                if (!Reflection.getOperators().Contains(c))
-                {
-                    if (!numberChars.Contains(c))
-                    {
-                        Console.Beep(2000, 1000);
-                        Console.WriteLine("Not accepted format, try again");
-                        getInput();
-                    }
-                }
-            }
         }
         public void splitInput()
         {
