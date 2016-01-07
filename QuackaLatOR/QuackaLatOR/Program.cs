@@ -20,9 +20,7 @@ namespace QuackaLatOR
             List<ICalculate> operaters;
             while (true)
             {
-                inputHandler.getInput();
-                inputHandler.splitInput();
-                inputHandler.concateResult();
+                inputHandler.execute();
                 operaters = operationFactory.createOperations(inputHandler.result);
                 Calculator.Calculator calculator = new Calculator.Calculator(inputHandler.result, operaters);
                 result = calculator.execute();

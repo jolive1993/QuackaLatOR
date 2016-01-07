@@ -67,5 +67,20 @@ namespace Tests
             expected = 3;
             Assert.AreEqual(expected, actual, "Don't Work");
         }
+        [TestMethod]
+        public void orderExecutionTest()
+        {
+            List<ICalculate> operaters;
+            List<string> equation;
+            int expected;
+            Addition add = new Addition();
+            Multiplication multi = new Multiplication();
+            operaters = new List<ICalculate> { multi, add };
+            equation = new List<string> { "6", "+", "2", "*", "10" };
+            Calculator.Calculator calculator = new Calculator.Calculator(equation, operaters);
+            var actual = calculator.execute();
+            expected = 26;
+            Assert.AreEqual(expected, actual, "Don't Work");
+        }
     }
 }

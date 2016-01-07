@@ -19,6 +19,7 @@ namespace Tests
             OperationFactory operationFactory = new OperationFactory();
             List<string> equation = new List<string> { "5", "+", "7", "*", "2" };
             var result = operationFactory.createOperations(equation);
+            Assert.AreEqual("*", result[0].Text);
         }
     }
 }
