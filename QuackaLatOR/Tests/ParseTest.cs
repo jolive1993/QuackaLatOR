@@ -17,12 +17,12 @@ namespace Tests
         {
             List<string> expected;
             InputHandler inputHandler = new InputHandler();
-            inputHandler.input = "-7 + 4";
-            expected = new List<string> { "-7", "+", "4" };
+            inputHandler.input = "-7+4";
+            expected = new List<string> { "-", "7", "+", "4" };
             inputHandler.splitInput();
             inputHandler.concateResult();
             var actual = inputHandler.result;
-            Assert.AreEqual(expected, actual, "Don't work");
+            Assert.AreEqual("-", actual[0], "Don't work");
         }
         [TestMethod]
         public void parseExtraneousWhiteSpaceTest()
@@ -34,7 +34,7 @@ namespace Tests
             inputHandler.splitInput();
             inputHandler.concateResult();
             var actual = inputHandler.result;
-            Assert.AreEqual(expected, actual, "Don't work");
+            Assert.AreEqual("7", actual[0], "Don't work");
         }
         [TestMethod]
         public void parseUnexpectedInput()
