@@ -12,6 +12,7 @@ namespace Calculator
     {
         private List<string> equation;
         private List<Operations.ICalculate> operators;
+        private char c;
         public Calculator(List<string> equation, List<Operations.ICalculate> operators)
         {
             this.equation = equation;
@@ -34,17 +35,32 @@ namespace Calculator
                     {
                         operators[i].Num1 = 0;
                     }
-                    char c = equation[index + 1][0];
+                    try
+                    {
+                        c = equation[index + 1][0];
+                    }
+                    catch (ArgumentOutOfRangeException)
+                    {
+                        c = '0';
+                    }
                     if (Constants.acceptedoperators.Contains(c))
                     {
                         operators[i].Num2 = Int32.Parse(equation[index + 2]);
+                        equation.RemoveAt(index + 2);
                     }
                     else
                     {
-                        operators[i].Num2 = Int32.Parse(equation[index + 1]);
+                        try
+                        {
+                            operators[i].Num2 = Int32.Parse(equation[index + 1]);
+                            equation.RemoveAt(index + 1);
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                            operators[i].Num2 = operators[i].Num1 * 2;
+                        }
                     }
                     operators[i].calculate();
-                    equation.RemoveAt(index + 1);
                     equation.RemoveAt(index);
                     try
                     {

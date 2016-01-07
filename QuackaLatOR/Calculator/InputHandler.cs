@@ -55,6 +55,11 @@ namespace Calculator
                 }
             }
             result.Reverse();
+            result.Clear();
+            foreach (char c in operators)
+            {
+                result.Add(c.ToString());
+            }
         }
         public void execute()
         {
