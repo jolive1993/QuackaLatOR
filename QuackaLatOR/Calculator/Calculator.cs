@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Operations;
+using DependencyInjection;
 
 namespace Calculator
 {
@@ -33,7 +34,15 @@ namespace Calculator
                     {
                         operators[i].Num1 = 0;
                     }
-                    operators[i].Num2 = Int32.Parse(equation[index + 1]);
+                    char c = equation[index + 1][0];
+                    if (Constants.acceptedoperators.Contains(c))
+                    {
+                        operators[i].Num2 = Int32.Parse(equation[index + 2]);
+                    }
+                    else
+                    {
+                        operators[i].Num2 = Int32.Parse(equation[index + 1]);
+                    }
                     operators[i].calculate();
                     equation.RemoveAt(index + 1);
                     equation.RemoveAt(index);

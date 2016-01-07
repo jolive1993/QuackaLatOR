@@ -33,7 +33,8 @@ namespace Calculator
                 {
                     if (!numberChars.Contains(c))
                     {
-                        Console.WriteLine("blaze it");
+                        Console.Beep(2000, 1000);
+                        Console.WriteLine("Not accepted format, try again");
                         getInput();
                     }
                 }

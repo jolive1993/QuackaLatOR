@@ -24,9 +24,8 @@ namespace QuackaLatOR
                 operaters = operationFactory.createOperations(inputHandler.result);
                 Calculator.Calculator calculator = new Calculator.Calculator(inputHandler.result, operaters);
                 result = calculator.execute();
-                Console.WriteLine(result);
+                Console.WriteLine(string.Format("Answer: {0}", result));
                 inputHandler.result.Clear();
-                Console.ReadLine();
             }
         }
     }
